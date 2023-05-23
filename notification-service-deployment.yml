@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-deploy
+  labels: 
+    app: notification
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notification
+  template:
+    metadata:
+      labels:
+        app: notification
+    spec:
+      containers:
+      - name: notification-service
+        image: abelaa/notification-service:latest
+        imagePullPolicy: Always
+        env:
+        - name: KAFKA_URI
+          value: 'kafka-deploy.default.svc.cluster.local:9092'
+        - name: USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: notification-secret
+              key: username
+        - name: PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: notification-secret
+              key: password
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: notification-secret
+type: Opaque
+data:
+  username: XXXX
+  password: XXXX
