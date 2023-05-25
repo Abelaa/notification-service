@@ -1,22 +1,30 @@
 package com.sa.notification;
 
+import com.sa.notification.models.CartItem;
+import com.sa.notification.models.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.kafka.annotation.EnableKafka;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 @EnableKafka
-public class NotificationApplication {
+public class NotificationApplication implements CommandLineRunner {
 
 	@Autowired
-	private JavaMailSender mailSender;
+	private EmailService sendEmailService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(NotificationApplication.class, args);
 	}
 
+	@Override
+	public void run(String... args) throws Exception {
+
+	}
 }

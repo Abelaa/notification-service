@@ -38,5 +38,5 @@ metadata:
   name: notification-secret
 type: Opaque
 data:
-  username: XXXX
-  password: XXXX
+  username: YWJlbG91dHRoZXJlQGdtYWlsLmNvbQo=
+  password: a2NvdG5penlzb3B1YWV6YQo=

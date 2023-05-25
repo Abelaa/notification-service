@@ -1,4 +1,4 @@
-package com.sa.notification;
+package com.sa.notification.models;
 
 public class EmailInfo {
     private String email;
